@@ -1,0 +1,41 @@
+.container{
+    display: flex;
+    justify-content: space-between !important;
+}
+nav{
+    background-color: white !important;
+    height: 100px;
+    position: fixed !important;
+    width: 100%;
+    z-index: 999 !important;
+}
+.collapse{
+    display: flex;
+    justify-content: center !important;
+}
+.navbar-brand{
+    font-size: 30px;
+    font-weight: 600;
+}
+.nav-link{
+    font-size: 20px;
+    font-weight: 500;
+}
+.input-search{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-weight: 500;
+    outline: none;
+    border-bottom: black 2px solid;
+}
+.d-flex{
+    display: flex;
+    gap: 20px;
+}
+.active_color{
+    color: grey !important;
+}
+input::placeholder{
+    color: black;
+}

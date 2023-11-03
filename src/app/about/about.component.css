@@ -1,0 +1,35 @@
+section{
+    position: relative;
+    top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(203, 203, 203);
+    height: 400px;
+    animation: onload 1s;
+}
+.bot-info{
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#about-p{
+    font-size: 22px;
+    font-weight: 500;
+}
+#about-title{
+    font-size: 60px;
+    font-weight: 600;
+}
+
+@keyframes onload{
+    from { opacity: 0}
+    to   { opacity: 1}
+}

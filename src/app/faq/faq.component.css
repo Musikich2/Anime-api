@@ -1,0 +1,72 @@
+section{
+    animation: onload 1s;
+    position: relative;
+    top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    width: 750px;
+    height: 500px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+#title{
+    font-size: 50px;
+    font-weight: 600;
+}
+.questions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    width: 100%;
+}
+i{
+    font-size: 20px;
+}
+#questions{
+    font-size: 30px;
+}
+.somethings{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+#somethings{
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes onload{
+    from { opacity: 0}
+    to   { opacity: 1}
+}
