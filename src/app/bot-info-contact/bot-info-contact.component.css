@@ -36,6 +36,7 @@ p{
     color: white;
     font-size: 19px;
     font-weight: 500;
+    border: none;
 }
 .account{
     display: flex;

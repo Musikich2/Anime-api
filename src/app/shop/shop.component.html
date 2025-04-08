@@ -1,77 +1,57 @@
-<section>
+<section class="everything">
+    <form [formGroup]="searchBar" class="searchbar">
+        <div class="search">
+          <input type="text" class="searchinput"
+           placeholder="&#xF002; Search" aria-label="Search" style="font-family: Arial, FontAwesome"
+           id="name" formControlName="name"
+           >
+        </div>
+        <div class="search">
+          <input type="number" class="filter"
+            placeholder="$" aria-label="Search" style="font-family: Arial, FontAwesome"
+            id="price" formControlName="price" max="1000"
+             >
+        </div>
+        <button class="btn btn-success" (click)="searching()">search</button>
+        <h1>Sadly site's API doesn't work anymore</h1>
+    </form>
     <div class="container">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-    </div>
-</section>
 
+      <ng-container *ngIf="test2; else elseBlock">
+
+        <div *ngFor="let data of test" class="card" style="width: 18rem;">
+          <a class="card"
+          (click)="navigateToGallery(data)"
+          routerLink="/gallery" >
+            <img [src]="data.images[0].source" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{data.name}}</h5>
+              <h5 class="card-title"> Price: {{data.pricePerNight}}$</h5>
+              <h5 class="card-title">maximum guests: {{data.maximumGuests}}</h5>
+              <h5 class="card-title">available: {{data.available}}</h5>
+            </div>
+          </a>
+          </div>
+
+      </ng-container>
+      <ng-template #elseBlock>
+
+          <div *ngFor="let data of allRoomInfo" class="card" style="width: 18rem;">
+            <a class="card"
+            (click)="navigateToGallery(data)"
+            routerLink="/gallery" >
+              <img [src]="data.images[0].source" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{data.name}}</h5>
+                <h5 class="card-title"> Price: {{data.pricePerNight}}$</h5>
+                <h5 class="card-title">maximum guests: {{data.maximumGuests}}</h5>
+                <h5 class="card-title">available: {{data.available}}</h5>
+              </div>
+            </a>
+            </div>
+
+      </ng-template>
+
+    </div>
+    
+</section>

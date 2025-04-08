@@ -1,6 +1,7 @@
 .container{
     display: flex;
-    justify-content: space-between !important;
+    justify-content: space-around !important;
+    /* margin: 0px 30px; */
 }
 nav{
     background-color: white !important;
@@ -9,6 +10,11 @@ nav{
     width: 100%;
     z-index: 999 !important;
 }
+.navbar-nav{
+    display: flex;
+    justify-content: center !important;
+
+}
 .collapse{
     display: flex;
     justify-content: center !important;
@@ -16,18 +22,12 @@ nav{
 .navbar-brand{
     font-size: 30px;
     font-weight: 600;
+    text-decoration: none;
+    border: none;
 }
 .nav-link{
     font-size: 20px;
     font-weight: 500;
-}
-.input-search{
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    font-weight: 500;
-    outline: none;
-    border-bottom: black 2px solid;
 }
 .d-flex{
     display: flex;
@@ -38,4 +38,20 @@ nav{
 }
 input::placeholder{
     color: black;
+}
+.btndiv{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px 0px;
+}
+.btndiv a{
+    border: none;
+    text-decoration: underline;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
 }

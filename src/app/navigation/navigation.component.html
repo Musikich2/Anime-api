@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand" href="#">project title</a>
+      <a class="navbar-brand" href="#">Hotel rooms</a>
       <div class="collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -17,9 +17,87 @@
           </li>
         </ul>
       </div>
-      <form class="d-flex" role="search">
-        <input class="input-search" type="search" placeholder="&#xF002; Search" aria-label="Search" style="font-family: Arial, FontAwesome">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div>
+        <button *ngIf="justLogin; else elseaccount" class="btn btn-success">
+          <i class="fa-solid fa-user"></i> {{loginForm.controls.loginEmail.value}}
+        </button>
+        <ng-template #elseaccount>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa-solid fa-user"></i> Sign up
+          </button>
+        </ng-template>
+      </div>
     </div>
   </nav>
+  
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 *ngIf="alreadyHaveAnAccount; else elsetitle" class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+          <ng-template #elsetitle>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Sign up</h1>
+          </ng-template>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div *ngIf="alreadyHaveAnAccount; else elseBlock" class="login">
+            <form [formGroup]="loginForm" class="loginForm">
+              <div>
+                <label for="email" class="col-form-label">Email</label>
+                <input type="email" id="loginEmail" class="form-control" formControlName="loginEmail" >
+              </div>
+              <div>
+                <label for="password" class="col-form-label">Password</label>
+                <input type="password" id="loginPassword" class="form-control" formControlName="loginPassword">
+              </div>
+              <div class="btndiv">
+                <button class="btn btn-primary" data-bs-dismiss="modal" (click)="alreadyLogin()" [disabled]="loginForm.invalid">Login</button>
+                <a href="#" (click)="goToRegister()">I don't have an account</a>
+              </div>
+            </form>
+          </div>
+          
+
+
+          <ng-template #elseBlock>
+            <div class="login" style="max-width:30rem">
+              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div id="register">
+  
+                  <div>
+                    <label for="name" class="col-form-label">Name</label>
+                    <input type="text" id="name" class="form-control" formControlName="name" >
+                  </div>
+                  <div>
+                    <label for="email" class="col-form-label">Email</label>
+                    <input type="email" id="email" class="form-control" formControlName="email" >
+                  </div>
+                  <div>
+                    <label for="password" class="col-form-label">Password</label>
+                    <input type="password" id="password" class="form-control" formControlName="password" (input)="this.registerForm.controls.confirmPassword.updateValueAndValidity()" >
+                  </div>
+                  <div>
+                    <label for="confirmPassword" class="col-form-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" >
+                  </div>
+                </div>
+            
+            <div class="btndiv">
+              <button class="btn btn-primary my-5" (click)="goToLogin()" [disabled]="registerForm.invalid" >Register</button>
+              <a href="#" (click)="goToLogin()" >I already have an account</a>
+            </div>
+              </form>
+            </div>
+          </ng-template>
+        
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
