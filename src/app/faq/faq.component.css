@@ -1,7 +1,7 @@
 section{
     animation: onload 1s;
     position: relative;
-    top: 200px;
+    top: 15vh;
     display: flex;
     justify-content: center;
     align-items: center;

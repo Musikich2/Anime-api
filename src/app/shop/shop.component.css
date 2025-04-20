@@ -1,3 +1,8 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+}
 .everything{
     display: flex;
     flex-direction: column;
@@ -5,29 +10,161 @@
     gap: 100px;
     width: 100%;
     position: relative;
-    top: 200px;
+    top: 15vh;
+    bottom: 0;
     animation: onload 1s;
+    background-color: #161922;
+    padding: 5% 0;
 }
 .container{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    gap: 40px;
-    max-width: 100%;
+    gap: 2vw;
+    min-width: 100%;
 }
+/******************************************* card ***************************************************************/
+
+.status-airing {
+    color: #4caf50; /* Green */
+    border-color: #4caf50;
+}
+
+.status-finished {
+    color: #2196f3; /* Blue */
+    border-color: #2196f3;
+}
+
+.status-upcoming {
+    color: #ff9800; /* Orange */
+    border-color: #ff9800;
+}
+
 a{
     text-decoration: none;
     border: grey 1px solid;
 }
-.card{
+.my-card{
+    display: flex;
     transition: 0.5s;
+    width: 400px !important;
+    height: 300px !important;
+    background-color: #161922;
+    border-radius: 10px;
+    position: relative;
+    justify-content: start;
+    align-items: center;
+    padding: 0.5vw;
+}
+#my-card{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #161922;
+    border-radius: 10px;
+    position: relative;
+    justify-content: start;
+    align-items: center;
+    padding: 0.5vw;
+    gap: 1vw;
 }
 
-.card:hover{
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    -webkit-box-shadow: inset 0px -102px 56px -42px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px -102px 56px -42px rgba(0,0,0,0.75);
+    box-shadow: inset 0px -102px 56px -42px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.img-rating{
+    max-width: 70%;
+    min-width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.my-card-img{
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+#rating{
+    position: absolute;
+    color: white;
+    font-size: 1vw;
+    bottom: 0.5vh;
+    left: 0.5vw;
+    margin: 0;
+    z-index: 2;
+}
+
+.card-info{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    flex-direction: column;
+    color: white;
+    font-weight: 400;
+    gap: 1.2vh;
+}
+.status{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(134, 134, 164);
+    border-radius: 10px;
+    padding: 0.5vw;
+}
+#status{
+    font-size: 1.5vw;
+    margin: 0;
+}
+.year{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 0.5vw;
+    font-size: 1.1vw;
+}
+
+
+
+
+.my-card:hover{
     box-shadow: -2px 4px 20px 0px black;
     transition: 0.5s;
+    transform: translateY(-10px);
 }
+
+
+
+
+/******************************************* card ***************************************************************/
 .searchbar{
     display: flex;
     flex-direction: column;

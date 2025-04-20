@@ -1,52 +1,97 @@
 <section class="everything">
-    <form [formGroup]="searchBar" class="searchbar">
+    <form [formGroup]="searchbar" class="searchbar">
         <div class="search">
           <input type="text" class="searchinput"
            placeholder="&#xF002; Search" aria-label="Search" style="font-family: Arial, FontAwesome"
-           id="name" formControlName="name"
+           id="name" [(ngModel)]="searchInput" formControlName="name"
            >
         </div>
         <div class="search">
           <input type="number" class="filter"
             placeholder="$" aria-label="Search" style="font-family: Arial, FontAwesome"
-            id="price" formControlName="price" max="1000"
+            id="price" max="1000" formControlName="price"
              >
         </div>
         <button class="btn btn-success" (click)="searching()">search</button>
-        <h1>Sadly site's API doesn't work anymore</h1>
     </form>
+
+
+    
     <div class="container">
 
       <ng-container *ngIf="test2; else elseBlock">
 
-        <div *ngFor="let data of test" class="card" style="width: 18rem;">
+        <!-- <div *ngFor="let data of test " class="card" style="width: 18rem;">
           <a class="card"
           (click)="navigateToGallery(data)"
           routerLink="/gallery" >
-            <img [src]="data.images[0].source" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{data.name}}</h5>
-              <h5 class="card-title"> Price: {{data.pricePerNight}}$</h5>
-              <h5 class="card-title">maximum guests: {{data.maximumGuests}}</h5>
-              <h5 class="card-title">available: {{data.available}}</h5>
-            </div>
+
+
           </a>
-          </div>
+          </div> -->
 
       </ng-container>
       <ng-template #elseBlock>
 
-          <div *ngFor="let data of allRoomInfo" class="card" style="width: 18rem;">
-            <a class="card"
+          <div *ngFor="let data of searchResults" class="my-card" style="width: 250px; height: 200px;">
+            <a id="my-card"
             (click)="navigateToGallery(data)"
             routerLink="/gallery" >
-              <img [src]="data.images[0].source" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{data.name}}</h5>
-                <h5 class="card-title"> Price: {{data.pricePerNight}}$</h5>
-                <h5 class="card-title">maximum guests: {{data.maximumGuests}}</h5>
-                <h5 class="card-title">available: {{data.available}}</h5>
+              <div class="img-rating">
+                <div class="image-wrapper">
+                  <img [src]="data.images.jpg.large_image_url" class="my-card-img" alt="...">
+                </div>
+                <p id="rating">| {{ data.rating?.startsWith('PG') ? 'PG-13' : data.rating?.substring(0, 2) }}</p>
               </div>
+              <div class="card-info">
+                <div class="status" [ngClass]="{
+                  'status-finished': data.status === 'Finished Airing',
+                  'status-airing': data.status === 'Currently Airing',
+                  'status-upcoming': data.status === 'Not yet aired'
+                }">
+                  <p id="status">{{data.status}}</p>
+                </div>
+
+
+                <ng-container *ngIf="data.episodes === 1; else multipleEpisodes">
+                  <div class="year">
+                    <p class="release">
+                      {{ data.season ? data.season : '' }} 
+                      {{ data.year ? data.year : '' }}
+                    </p>
+                    <p class="episodes">Movie</p>
+                  </div>
+                </ng-container>
+          
+                
+                <ng-template #multipleEpisodes>
+                  <ng-container *ngIf="data.episodes != null; else noEpisodes">
+                    <div class="year">
+                      <p class="release">
+                        {{ data.season ? data.season : '' }} 
+                        {{ data.year ? data.year : '' }}
+                      </p>
+                      <p class="episodes">{{ data.episodes }} episodes</p>
+                    </div>
+                  </ng-container>
+                </ng-template>
+          
+                
+                <ng-template #noEpisodes>
+                  <div class="year">
+                    <p class="release">
+                      {{ data.season ? data.season : '' }} 
+                      {{ data.year ? data.year : '' }}
+                    </p>
+                  </div>
+                </ng-template>
+
+                <div class="title">
+                  <p id="title">{{ data.title.length > 40 ? (data.title | slice:0:40) + '...' : data.title }}</p>
+
+                </div>
+              </div>
+              
             </a>
             </div>
 

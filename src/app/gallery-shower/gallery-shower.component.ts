@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GalleryShowerComponent {
 
-  public moreInfoRooms:any;
+  public animeInfo:any;
   public savedDate:boolean = false
 
 
@@ -16,8 +16,8 @@ export class GalleryShowerComponent {
 public tes:any;
   constructor(private router:ActivatedRoute){
     this.router.queryParams.subscribe((data:any) => {
-        this.moreInfoRooms = JSON.parse(data.roomInfo);
-        console.log(this.moreInfoRooms)
+        this.animeInfo = JSON.parse(data.roomInfo);
+        console.log(this.animeInfo)
     });
   }
 

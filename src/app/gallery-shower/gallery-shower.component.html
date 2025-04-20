@@ -1,24 +1,24 @@
 <section >
-    <h1 class="name">{{moreInfoRooms.name}}</h1>
+    <h1 class="name">{{animeInfo.title}}</h1>
     <div class="container">
         <div class="firsthalf">
             <div class="photos">
                 <div id="carouselExampleFade" class="carousel slide carousel-fade">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img [src]="moreInfoRooms.images[0].source" class="d-block w-100" alt="...">
+                        <img [src]="animeInfo.images.jpg.large_image_url" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img [src]="moreInfoRooms.images[1].source" class="d-block w-100" alt="...">
+                        <img [src]="animeInfo.images[1].source" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img [src]="moreInfoRooms.images[2].source" class="d-block w-100" alt="...">
+                        <img [src]="animeInfo.images[2].source" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img [src]="moreInfoRooms.images[3].source" class="d-block w-100" alt="...">
+                        <img [src]="animeInfo.images[3].source" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img [src]="moreInfoRooms.images[4].source" class="d-block w-100" alt="...">
+                        <img [src]="animeInfo.images[4].source" class="d-block w-100" alt="...">
                       </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -38,9 +38,9 @@
             </div>
         </div>
         <div class="secendhalf">
-            <p class="price">cost: {{moreInfoRooms.pricePerNight}}$</p>
-            <p class="maxguests">maximum amount of guests: {{moreInfoRooms.maximumGuests}}</p>
-            <p class="available">available: {{moreInfoRooms.available}}</p>
+            <p class="price">cost: {{animeInfo.pricePerNight}}$</p>
+            <p class="maxguests">maximum amount of guests: {{animeInfo.maximumGuests}}</p>
+            <p class="available">available: {{animeInfo.available}}</p>
             <div class="order">
                 <button class="cart">Add to cart</button>
                 <button type="button" class="book" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Book the room</button>
@@ -57,7 +57,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{moreInfoRooms.name}}</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{animeInfo.name}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

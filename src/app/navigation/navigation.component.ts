@@ -18,12 +18,12 @@ export class NavigationComponent {
   constructor( private fb: NonNullableFormBuilder){
     this.registerForm = this.fb.group({
       name:['',[Validators.required , Validators.minLength(3) , Validators.pattern(/^[A-z]/) , this.badNameValidator('badname')]],
-      email:['',[Validators.email , Validators.required]],
+      email:['',[Validators.email , Validators.required,]],
       password:['',[Validators.required,Validators.minLength(8)]],
       confirmPassword:['',[Validators.required ]]
     })
 
-    
+
     this.registerForm.controls.confirmPassword.setValidators([
       this.confirmPasswordValidator(this.registerForm.controls.password) , 
       Validators.required

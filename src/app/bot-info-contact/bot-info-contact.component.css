@@ -4,15 +4,19 @@
 }
 
 section{
-    margin-top: 400px;
+    margin-top: 7.5%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: black;
-    height: 400px;
+    position: relative;
+    bottom: 0;
+    height: 40%;
+    width: 100%;
+    padding: 5% 0;
 }
 .info{
-    width: 800px;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -74,6 +78,7 @@ p{
     background-color: white;
     color: black;
     height: 40px;
+    width: 20%;
     font-weight: 500;
     padding: 0px 15px;
     transition: 0.5s;

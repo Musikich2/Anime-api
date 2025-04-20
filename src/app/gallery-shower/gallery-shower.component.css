@@ -1,6 +1,6 @@
 section{
     position: relative;
-    top: 150px;
+    top: 15vh;
     display: flex;
     align-items: center;
     flex-direction: column;

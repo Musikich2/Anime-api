@@ -14,7 +14,7 @@ import { BotInfoContactComponent } from './bot-info-contact/bot-info-contact.com
 import { GalleryShowerComponent } from './gallery-shower/gallery-shower.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { SpinnerComponent } from './spinner/spinner.component';
-import { LoadingInterceptor } from './loading.interceptor';
+import { LoadingInterceptor } from './loader/loading.interceptor';
 
 
 @NgModule({

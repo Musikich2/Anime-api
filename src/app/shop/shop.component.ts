@@ -2,6 +2,8 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserServicesService } from '../user-services.service';
+import { all } from 'axios';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-shop',
@@ -12,68 +14,97 @@ import { UserServicesService } from '../user-services.service';
 export class ShopComponent {
 
 
-  public allRoomInfo:any;
+  public searchResults:any;
   public test:any = [];
   public test2:boolean = false;
 
-  searchBar = this.fb.group({
-    name:['', Validators.maxLength(100)],
-    price:['', Validators.max(999)]
+  public searchResultsStatus:any;
+
+
+
+  public searchbar = this.fb.group({
+    name: [''],
+    price: ['']
   })
 
+  public searchInput:string = '';
 
-  constructor(private http:UserServicesService,private router: Router,private fb:NonNullableFormBuilder){
+
+  constructor(private http:UserServicesService, private router: Router,private fb:NonNullableFormBuilder){
     this.http.returnAnime().subscribe((data:any) => {
-      this.allRoomInfo = data;
-    })
+      this.searchResults = data.data;
+      console.log(this.searchResults);
+      });
+
+      // this.searchResults.forEach((items:any) => {
+      //   if(items.status == 'Finished Airing'){
+
+      //   }
+      // });
   }
 
 
+
+
   searching(){
+    this.http.returnAnimeWithSearch(this.searchInput).subscribe((data:any) => {
+      let uniqueResults = new Map();
+    data.data.forEach((item: any) => {
+      if (!uniqueResults.has(item.mal_id)) {
+        uniqueResults.set(item.mal_id, item);
+      }
+    });
 
-    if(this.searchBar.controls.name.value == ''){
-      this.test = this.allRoomInfo;
-    } if (this.searchBar.controls.price.value == ''){
-      this.test = this.allRoomInfo;
-    }
+    this.searchResults = Array.from(uniqueResults.values());
+    console.log(this.searchResults);
+    })
 
 
-    if (this.searchBar.controls.name.dirty){
+    // if(this.searchBar.controls.name.value == ''){
+    //   this.test = this.searchResults;
+    // } 
+    
+    // if (this.searchBar.controls.price.value == ''){
+    //   this.test = this.searchResults;
+    // }
 
-      this.test = [];
-      this.test2 = true;
+
+    // if (this.searchBar.controls.name.dirty){
+
+    //   this.test = [];
+    //   this.test2 = true;
    
-      this.allRoomInfo.forEach((item:any) => {
-        if(item.name.toLowerCase().includes(this.searchBar.controls.name.value)){
-          this.test.push(item)
-        }
-      } )
+    //   this.searchResults.forEach((item:any) => {
+    //     if(item.name.toLowerCase().includes(this.searchBar.controls.name.value)){
+    //       this.test.push(item)
+    //     }
+    //   } )
 
-    } if (this.searchBar.controls.price.dirty  &&  this.searchBar.controls.price.value !== null){
-       this.test = [];
-       this.test2 = true;
+    // } if (this.searchBar.controls.price.dirty  &&  this.searchBar.controls.price.value !== null){
+    //    this.test = [];
+    //    this.test2 = true;
 
-       this.allRoomInfo.forEach((item:any) => {
-        if(item.pricePerNight == this.searchBar.controls.price.value){
+    //    this.searchResults.forEach((item:any) => {
+    //     if(item.pricePerNight == this.searchBar.controls.price.value){
   
-            this.test.push(item)
+    //         this.test.push(item)
            
-        }
-      } )
-       console.log(this.test)
-     }  if (this.searchBar.controls.name.dirty && this.searchBar.controls.price.dirty &&  this.searchBar.controls.price.value !== null){
-       console.log(this.searchBar.controls.price.value)
-      this.test = [];
-      this.test2 = true;
+    //     }
+    //   } )
+    //    console.log(this.test)
+    //  }  if (this.searchBar.controls.name.dirty && this.searchBar.controls.price.dirty &&  this.searchBar.controls.price.value !== null){
+    //    console.log(this.searchBar.controls.price.value)
+    //   this.test = [];
+    //   this.test2 = true;
 
-      this.allRoomInfo.forEach((data:any) => {
-        if(data.pricePerNight == this.searchBar.controls.price.value && data.name.toLowerCase().includes(this.searchBar.controls.name.value)){
-          this.test.push(data)
-          console.log(data)
-        }
-      })
-      console.log(this.test)
-     }
+    //   this.searchResults.forEach((data:any) => {
+    //     if(data.pricePerNight == this.searchBar.controls.price.value && data.name.toLowerCase().includes(this.searchBar.controls.name.value)){
+    //       this.test.push(data)
+    //       console.log(data)
+    //     }
+    //   })
+    //   console.log(this.test)
+    //  }
    }
 
 

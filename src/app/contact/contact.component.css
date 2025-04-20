@@ -9,7 +9,8 @@ section{
     flex-direction: column;
     align-items: center;
     position: relative;
-    top: 200px;
+    top: 15vh;
+    padding-bottom: 2vh;
 }
 .contact{
     display: flex;

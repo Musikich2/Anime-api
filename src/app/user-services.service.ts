@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,11 +6,20 @@ import { Injectable } from '@angular/core';
 })
 export class UserServicesService {
 
+
+
   constructor(private info:HttpClient) {}
 
 
-  returnAnime(){
-    return this.info.get('https://hotelbooking.webwide.ge/api/Rooms/GetAll')
+  returnAnimeWithSearch(search: string) {
+    const params = new HttpParams().set('q', search);
+    return this.info.get('https://api.jikan.moe/v4/anime', { params });
+  }
+
+
+  returnAnime() {
+    
+    return this.info.get('https://api.jikan.moe/v4/anime');
   }
 
 }
